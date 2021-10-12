@@ -1,4 +1,13 @@
 import jwt from 'jsonwebtoken';
+import cloudinary from 'cloudinary';
+import dotenv from 'dotenv';
+
+dotenv.config();
+cloudinary.v2.config({
+  cloud_name: process.env.CLOUDINARY_CLOUD_NAME || '',
+  api_key: process.env.CLOUDINARY_API_KEY || '',
+  api_secret: process.env.CLOUDINARY_API_SECRET || '',
+});
 
 export const generateToken = (user) => {
   return jwt.sign(
@@ -53,4 +62,10 @@ export const isLecturerOrAdmin = (req, res, next) => {
   } else {
     res.status(404).send({ message: 'Invalid Admin/Lecturer Token' });
   }
+};
+
+export const uploadImage = (path, category = null) => {
+  const options = category ? { tags: category } : {};
+
+  return cloudinary.v2.uploader.upload(path, options);
 };

@@ -3,7 +3,7 @@ import expressAsyncHandler from 'express-async-handler';
 import data from '../data.js';
 import Course from '../models/courseModel.js';
 import User from '../models/userModel.js';
-import { isAdmin, isAuth } from '../utils.js';
+import { isAdmin, isAuth, uploadImage } from '../utils.js';
 
 const courseRouter = express.Router();
 
@@ -140,10 +140,14 @@ courseRouter.post(
   isAuth,
   isAdmin,
   expressAsyncHandler(async (req, res) => {
+    const image = req.body.image
+      ? await uploadImage(req.body.image, req.body.category)
+      : '';
+
     const course = new Course({
       name: req.body.name,
       lecturer: req.user._id,
-      image: req.body.image || '',
+      image: image ? image.secure_url : '',
       price: req.body.price || 0,
       category: req.body.category,
       rating: req.body.rating || 0,
