@@ -179,7 +179,7 @@
      - ```GET localhost:5000/api/courses/search/?name=backend```, akan menghasilkan course dengan name yang mengandung 'backend', insensitve case
      - ```GET localhost:5000/api/courses/search/?min=100000&max=500000```, akan menghasilkan course dengan range harga 100000 - 5000000
      - ```GET localhost:5000/api/courses/search/?category=Programming```, akan menghasilkan course dengan category 'Programming', sensitive case.
-     - Sort Course, ```GET localhost:5000/api/courses/search/?order=lowest```, akan menghasilkan semua course yang diurutkan berdasarkan harga terendah
+     - **Sort Course** ```GET localhost:5000/api/courses/search/?order=lowest```, akan menghasilkan semua course yang diurutkan berdasarkan harga terendah
      - Option untuk paramater ```order``` meliputi ```lowest```,```highest```, dan ```free```, untuk ```free``` otomatis yang tampil hanya course dengan harga 0
      - Anda juga dapat melakukan combine parameters seperti berikut: ```GET localhost:5000/api/courses/search/?min=100000&max=500000&order=lowest```, dst
      
@@ -189,7 +189,7 @@
      - Pada header request ```Authorization: bearer {token}```, dapatkan token Admin dengan Signin terlebih dahulu dengan user ```Admin@gmail.com``` atau Admin user lainnya
      
     
-  ## 3. Deploy Heroku
+## 3. Deploy Heroku
   - Login [Heroku](https://www.heroku.com), atau Buat Akun baru jikalau belum ada
   - Pada [Dashboard](https://dashboard.heroku.com/apps), buat new App
   - Lalu kasih nama App sesuai keinginan
