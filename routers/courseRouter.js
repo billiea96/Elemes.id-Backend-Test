@@ -108,7 +108,7 @@ courseRouter.get(
     if (lecturer) {
       const courses = data.courses.map((course) => ({
         ...course,
-        lecturer: _id,
+        lecturer: lecturer._id,
       }));
       const createdCourse = await Course.insertMany(courses);
       res.status(201).send({ createdCourse });
