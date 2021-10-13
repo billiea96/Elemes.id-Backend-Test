@@ -183,7 +183,7 @@
      - Option untuk paramater ```order``` meliputi ```lowest```,```highest```, dan ```free```, untuk ```free``` otomatis yang tampil hanya course dengan harga 0
      - Anda juga dapat melakukan combine parameters seperti berikut: ```GET localhost:5000/api/courses/search/?min=100000&max=500000&order=lowest```, dst
      
-     ### Get Simple Statistics
+     #### Get Simple Statistics
      - Untuk mendapatkan statistic yaitu total user, total course, dan total free course. API ini hanya bisa direquest oleh Admin user
      - ```GET localhost:5000/api/courses/simple-statistics```
      - Pada header request ```Authorization: bearer {token}```, dapatkan token Admin dengan Signin terlebih dahulu dengan user ```Admin@gmail.com``` atau Admin user lainnya
