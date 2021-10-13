@@ -171,7 +171,13 @@ courseRouter.put(
       course.name = req.body.name || course.name;
       course.price =
         req.body.price === 0 || req.body.price ? req.body.price : course.price;
-      course.image = req.body.image || course.image;
+
+      if (course.image !== req.body.image) {
+        const image = req.body.image
+          ? await uploadImage(req.body.image, req.body.category)
+          : '';
+        course.image = image ? image.secure_url : course.image;
+      }
       course.category = req.body.category || course.category;
       course.rating =
         req.body.rating === 0 || req.body.rating
